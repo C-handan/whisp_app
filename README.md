@@ -1,1 +1,1 @@
-# chat_app
+# Whisp app
