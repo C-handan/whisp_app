@@ -10,14 +10,27 @@ const io = new Server(server, {
     origin: ["http://localhost:5173"],
   },
 });
+
+export function getReceiverSocketId(userId) {
+  return userSocketMap[userId];
+}
+
 // will be used to store online users
 const userSocketMap = {}; // {userId: socketId}
 
 io.on("connection", (socket) => {
   console.log("A user connected", socket.id);
+  const userId = socket.handshake.query.userId;
+  if (userId) {
+    userSocketMap[userId] = socket.id;
+  }
+  // Emit an event to the client to confirm connection
+  io.emit("getOnlineUsers", Object.keys(userSocketMap));
 
   socket.on("disconnect", () => {
     console.log("A user disconnected", socket.id);
+    delete userSocketMap[userId];
+    io.emit("getOnlineUsers", Object.keys(userSocketMap));
   });
 });
 
