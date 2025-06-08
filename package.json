@@ -1,0 +1,22 @@
+{
+  "name": "whisp_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "",
+    "start": ""
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/C-handan/whisp_app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/C-handan/whisp_app/issues"
+  },
+  "homepage": "https://github.com/C-handan/whisp_app#readme"
+}
