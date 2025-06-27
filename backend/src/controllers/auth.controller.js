@@ -2,7 +2,7 @@ import { generateToken } from "../lib/utils.js";
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import cloudinary from "../lib/cloudinary.js";
-// @desc    Register a new user
+//    Register a new user
 export const signup = async (req, res) => {
   // we need a database
   const { fullName, email, password } = req.body;
@@ -33,7 +33,7 @@ export const signup = async (req, res) => {
       email,
       password: hashedPassword,
     });
-
+    // if newuser is successfully made
     if (newUser) {
       // generate JWT token
       generateToken(newUser._id, res);
@@ -56,7 +56,7 @@ export const signup = async (req, res) => {
   }
 };
 
-// @desc    Login a user
+//    Login a user
 export const login = async (req, res) => {
   const { email, password } = req.body;
 
@@ -70,7 +70,7 @@ export const login = async (req, res) => {
     if (!isPasswordCorrect) {
       return res.status(400).json({ message: "Invalid Credentials" });
     }
-
+    // now after this token verification, a cookie will be there named jwt with this logged in user
     generateToken(user._id, res);
 
     res.status(200).json({
@@ -86,9 +86,10 @@ export const login = async (req, res) => {
     });
   }
 };
-// @desc    Logout a user
+//    Logout a user
 export const logout = (req, res) => {
   try {
+    // the jwt token now becomes empty token
     res.cookie("jwt", "", { maxAge: 0 });
     res.status(200).json({ message: "Logged out successfully" });
   } catch (error) {
@@ -98,7 +99,7 @@ export const logout = (req, res) => {
     });
   }
 };
-// @desc    Update user profilePic
+//    Update user profilePic
 export const updateProfile = async (req, res) => {
   try {
     const { profilePic } = req.body;
@@ -128,7 +129,7 @@ export const updateProfile = async (req, res) => {
   }
 };
 
-// @desc    Check if user is logged in
+//    Check if user is logged in
 export const checkAuth = (req, res) => {
   try {
     res.status(200).json(req.user);

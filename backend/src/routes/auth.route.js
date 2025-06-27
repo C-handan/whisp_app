@@ -13,8 +13,8 @@ router.post("/signup", signup);
 router.post("/login", login);
 router.post("/logout", logout);
 
-// @desc    Update user profile
-// allows updatin only when user is logged in by protect user function
+//    Update user profile
+// allows update only when user is logged in by protect user function
 router.put("/update-profile", protectRoute, updateProfile);
 router.get("/check", protectRoute, checkAuth);
 
