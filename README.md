@@ -1,4 +1,4 @@
-# Whisp app
+# <img src="./frontend/public/app.png" width="36" alt="Whisp Logo"> Whisp : Full Stack Chat Application
 
 A **real-time chat application** built with the MERN stack (MongoDB, Express.js, React.js, Node.js) and **Socket.io**. It supports secure user authentication, instant messaging, and persistent chat history.
 
@@ -75,15 +75,15 @@ NODE_ENV= development
 ```
 
 Run the backend server
+
 ```bash
 npm run dev
 ```
 
 Go to frontend folder and install dependencies
+
 ```bash
 cd ../frontend
 npm i
 npm run dev
 ```
-
-
